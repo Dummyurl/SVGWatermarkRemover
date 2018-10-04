@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/sldevand/SVGWatermarkRemover#readme",
   "dependencies": {
-    "bootstrap": "^4.1.1"
+    "bootstrap": "^4.1.1",
+    "jquery" : "latest",
+    "popper.js":"latest"
   }
 }
