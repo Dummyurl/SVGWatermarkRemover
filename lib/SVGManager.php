@@ -1,12 +1,20 @@
 <?php
 namespace Utils;
 
+/**
+ * Class SVGManager
+ * @package Utils
+ * @author Sébastien Lorrain
+ */
 class SVGManager
 {
   public static $svg;
   public static $targetDir="output/";
 
-  public static function removeWatermarks()
+    /**
+     * @throws \ImagickException
+     */
+    public static function removeWatermarks()
   {
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) {
@@ -26,12 +34,16 @@ class SVGManager
           self::removeWatermark($tmpFile);
           self::saveSVG($targetFile);
           self::displaySVG($targetFile);
+            self::savePngFromSVG($targetFile);
 
         }
       }
     }
   }
 
+    /**
+     * @param string $tmpFile
+     */
   public static function removeWatermark($tmpFile)
   {
     self::$svg = new \SimpleXMLElement( file_get_contents( $tmpFile )  );
@@ -46,11 +58,46 @@ class SVGManager
   public static function saveSVG($targetFile)
   {
     self::$svg->asXML( $targetFile);
+
   }
 
   public static function displaySVG($targetFile)
   {
     $resultSvg = file_get_contents($targetFile);
     print_r($resultSvg);
+  }
+
+    /**
+     * @param $sourceFile
+     * @throws \ImagickException
+     */
+    public static function savePngFromSVG($sourceFile){
+      $im = new \Imagick();
+      $svg = file_get_contents($sourceFile);
+        $im->setCompressionQuality(100);
+
+
+        if(!$im->readImageBlob($svg)) return;
+        /*png settings*/
+        if(!$im->setImageFormat("png")) return;
+
+        $pattern="/\.svg$/";
+
+        if(preg_match($pattern,$sourceFile)){
+            $destFile = preg_replace($pattern,".png",$sourceFile);
+            if(!$im->writeImage($destFile)) return;
+
+            echo "image wrote successfully</br>";
+        }
+
+
+
+
+
+
+        $im->clear();
+        $im->destroy();
+
+
   }
 }

@@ -5,6 +5,11 @@ SVGWatermarkRemover
 * PHP 5.6 and above
 * apache2 server
 
+```
+sudo apt-get install php7.2-imagick
+sudo apt-get install libgraphicsmagick1-dev libmagickcore-dev libmagickcore-6.q16-2 libmagickcore-6.q16-2-extra
+```
+
 ## Installation
 Clone this repository into your /var/www folder (or your favorite working folder)
 ```

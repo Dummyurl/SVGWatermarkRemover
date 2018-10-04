@@ -6,7 +6,7 @@ class TokenManager
 {
     public static function create()
     {
-        $token;
+       
         if (version_compare(phpversion(), '7.0.0', '<')) {
             $token = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
             if (function_exists('mcrypt_create_iv')) {
