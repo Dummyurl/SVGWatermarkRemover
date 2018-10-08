@@ -16,9 +16,13 @@
     "url": "https://github.com/sldevand/SVGWatermarkRemover/issues"
   },
   "homepage": "https://github.com/sldevand/SVGWatermarkRemover#readme",
+  "scripts":{
+    "svgexport":"node_modules/.bin/svgexport"
+  },
   "dependencies": {
     "bootstrap": "^4.1.1",
     "jquery": "latest",
-    "popper.js": "latest"
+    "popper.js": "latest",
+    "svgexport": "latest"
   }
 }
