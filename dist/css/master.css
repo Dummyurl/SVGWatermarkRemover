@@ -1,3 +1,20 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+body{
+    background: black;
+}
+
+.display-6{
+    text-decoration: none !important;
+    color:black;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover{
+    text-decoration: none !important;
+}
+
 
