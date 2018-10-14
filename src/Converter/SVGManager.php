@@ -2,6 +2,8 @@
 
 namespace App\Converter;
 
+use App\Exception\ConverterException;
+
 /**
  * Class SVGManager
  * @package Converter
@@ -49,21 +51,21 @@ class SVGManager
     /**
      * @param string $outputDir
      */
-    public function removeSvgInOutputDir($outputDir)
+    public function clearOutputDir($outputDir)
     {
-        $file = $outputDir . "*.svg";
+        $file = $outputDir . "*";
         array_map("unlink", glob($file));
     }
 
     /**
      * Removes Watermarks from SVG file
-     * @throws \Exception
+     * @throws ConverterException
      */
     public function removeWatermarks()
     {
 
         if (!isset($_POST["submit"])) {
-            throw new \Exception('$_POST[submit] is not set');
+            throw new ConverterException('$_POST[submit] is not set');
         }
 
 

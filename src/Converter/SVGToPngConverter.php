@@ -2,6 +2,8 @@
 
 namespace App\Converter;
 
+use App\Exception\ConverterException;
+
 /**
  * Class SVGToPngConverter
  * @package Converter
@@ -42,7 +44,7 @@ class SVGToPngConverter
     }
 
     /**
-     * @throws \ImagickException
+     * @throws ConverterException
      */
     public function convertSvgToPngDir()
     {
@@ -57,7 +59,7 @@ class SVGToPngConverter
     /**
      * @param string $sourceFile
      * @return array
-     * @throws \ImagickException
+     * @throws ConverterException
      */
     public function convertSvgToPngFile($sourceFile)
     {
@@ -65,7 +67,7 @@ class SVGToPngConverter
         $pattern = "/\.svg$/";
 
         if (!preg_match($pattern, $sourceFile)) {
-            throw new \ImagickException("Oops Cant find svg file!");
+            throw new ConverterException("Oops Cant find svg file!");
         }
 
         $destFile = preg_replace($pattern, ".png", $sourceFile);

@@ -14,6 +14,7 @@
                 <a href="">
                     <h2 class="display-6">StarUML watermark remover</h2>
                 </a>
+                <div id="result"></div>
                 <hr class="my-4">
                 <div id="content">
                     <form action="" method="post" enctype="multipart/form-data">
