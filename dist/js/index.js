@@ -1,24 +1,16 @@
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", () => {
 
-function init() {
+    let content = document.querySelector("#content");
+    let url = "index.php";
+
     document.forms[0].addEventListener("submit", (e) => {
         e.preventDefault();
-        var content = document.querySelector("#content");
-        url = "index.php";
-        var formData = new FormData(e.target);
-        formData.append('submit', "ok");
-
-        xhr = new XMLHttpRequest();
-        xhr.open('POST', url);
-
         content.innerHTML = getProgressBarIndeterminate();
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                content.innerHTML = xhr.response;
-            }
-        }
-        xhr.send(formData);
+        let formData = new FormData(e.target);
+        formData.append('submit', "ok");
+
+        postForm(formData);
     });
 
     function getProgressBarIndeterminate() {
@@ -26,4 +18,16 @@ function init() {
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                 </div>`;
     }
-}
+
+    function postForm(formData) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                content.innerHTML = xhr.response;
+            }
+        }
+        xhr.send(formData);
+    }
+});
+
