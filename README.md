@@ -1,5 +1,7 @@
 SVGWatermarkRemover
 =====
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/69a41c4ac71d4041bc03ccc1090a5cfd)](https://www.codacy.com/app/sldevand/SVGWatermarkRemover?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sldevand/SVGWatermarkRemover&amp;utm_campaign=Badge_Grade)
+
 **SVGWatermarkRemover** is an SVG watermark remover for starUML 3.0 svg exports.
 *  It removes UNREGISTERED watermarks from SVG files
 *  It exports these images in png format
