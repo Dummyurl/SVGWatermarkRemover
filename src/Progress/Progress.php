@@ -44,7 +44,7 @@ class Progress
     public function setProgress($progress)
     {
         $this->progress = $progress;
-        file_put_contents(ROOT."dist/json/progress.json",json_encode(["status"=>$this->progress]));
+        file_put_contents(ROOT . "dist/json/progress.json", json_encode(["status" => $this->progress]));
         return $this;
     }
 }

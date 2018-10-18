@@ -1,4 +1,5 @@
 <?php
+
 require_once 'setup.php';
 
 use App\Progress\Progress;
@@ -6,6 +7,7 @@ use App\Token\TokenManager;
 use App\Converter\SVGManager;
 use App\Converter\SVGToPngConverter;
 use App\Archiver\Archiver;
+session_start();
 
 $targetDir = OUTPUT;
 
@@ -14,15 +16,15 @@ $method = $_SERVER['REQUEST_METHOD'];
 //ROUTING
 if ($method === "GET") {
     try {
-       createForm();
+        createForm();
     } catch (Exception $e) {
-        echo $e->getMessage();
+        echo htmlspecialchars($e->getMessage());
     }
 } elseif ($method === "POST") {
     try {
         createSvgandPng($targetDir);
     } catch (Exception $e) {
-        echo $e->getMessage();
+        echo htmlspecialchars($e->getMessage());
     }
 }
 
@@ -30,16 +32,19 @@ if ($method === "GET") {
 /**
  * @throws \Exception
  */
-function createForm(){
+function createForm()
+{
+    /** @var string $token */
     $token = TokenManager::create();
-    require VIEW.'form.php';
+    require VIEW . 'form.php';
 }
 
 /**
  * @param string $targetDir
  * @throws Exception
  */
-function createSvgandPng($targetDir){
+function createSvgandPng($targetDir)
+{
 
     /** @var SVGManager $svgManager */
     $svgManager = SVGManager::getInstance($targetDir);
@@ -48,8 +53,8 @@ function createSvgandPng($targetDir){
     $svgToPngConverter = SVGToPngConverter::getInstance($targetDir);
 
     /** @var Archiver $archiver */
-    $archiver = Archiver::getInstance($targetDir,'starUML.zip');
-    $types=["png","svg"];
+    $archiver = Archiver::getInstance($targetDir, 'starUML.zip');
+    $types = ["png", "svg"];
 
     /** @var Progress $progress */
     $progress = Progress::getInstance();
@@ -61,8 +66,9 @@ function createSvgandPng($targetDir){
         $progress->setProgress(15);
         $svgToPngConverter->convertSvgToPngDir();
         $progress->setProgress(80);
-        $archiver->createArchive($types,true);
+        $archiver->createArchive($types, true);
+        $progress->setProgress(0);
     }
 
-    $progress->setProgress(0);
+
 }

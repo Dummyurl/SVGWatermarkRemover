@@ -4,8 +4,6 @@ namespace App\Token;
 
 use App\Exception\TokenException;
 
-session_start();
-
 /**
  * Class TokenManager
  * @package Token
@@ -20,7 +18,7 @@ class TokenManager
     public static function create()
     {
 
-        try{
+        try {
             $token = version_compare(phpversion(), '7.0.0', '<')
                 ? (function_exists('mcrypt_create_iv')
                     ? bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM))
@@ -28,7 +26,7 @@ class TokenManager
                 : bin2hex(random_bytes(32));
             $_SESSION['token'] = $token;
             return $token;
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             throw new TokenException($e->getMessage());
         }
     }

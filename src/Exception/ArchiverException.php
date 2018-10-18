@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Exception;
+
 /**
  * Class ArchiverException
  * @package App\Exception

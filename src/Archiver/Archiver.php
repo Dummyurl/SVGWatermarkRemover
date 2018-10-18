@@ -58,7 +58,7 @@ class Archiver
      * @param bool $deleteOriginalFiles
      * @throws ArchiverException
      */
-    public function createArchive($fileTypes,$deleteOriginalFiles = false)
+    public function createArchive($fileTypes, $deleteOriginalFiles = false)
     {
         $zip = new ZipArchive();
 
@@ -71,7 +71,7 @@ class Archiver
 
             $extension = pathinfo($file)["extension"];
 
-            if (in_array($extension,$fileTypes)) {
+            if (in_array($extension, $fileTypes)) {
                 if (!$zip->addFile($this->targetDir . $file, $extension . '/' . $file)) {
                     throw new ArchiverException("Can't add file : $file to archive");
                 }
@@ -81,8 +81,8 @@ class Archiver
         $zip->close();
 
         if ($deleteOriginalFiles) {
-            foreach ($fileTypes as $fileType){
-                array_map("unlink", glob($this->targetDir."*.$fileType"));
+            foreach ($fileTypes as $fileType) {
+                array_map("unlink", glob($this->targetDir . "*.$fileType"));
             }
         }
     }
@@ -94,8 +94,8 @@ class Archiver
     {
         $zip = new ZipArchive();
 
-        if ($zip->open($zipFile) !== TRUE) {
-            die ("Could not open archive");
+        if ($zip->open($zipFile) !== true) {
+            die("Could not open archive");
         }
 
         $numFiles = $zip->numFiles;

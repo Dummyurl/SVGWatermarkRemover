@@ -25,7 +25,7 @@
                         </div>
                         <button class="btn btn-primary" type="submit" value="Upload Files" name="submit">Upload Files
                         </button>
-                        <input type="hidden" name="token" id="token" value="<?php echo $token; ?>"/>
+                        <input type="hidden" name="token" id="token" value="<?php echo htmlspecialchars($token); ?>"/>
                     </form>
                 </div>
             </div>

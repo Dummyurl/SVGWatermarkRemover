@@ -1,12 +1,12 @@
 SVGWatermarkRemover
 =====
 **SVGWatermarkRemover** is an SVG watermark remover for starUML 3.0 svg exports.
-* It removes UNREGISTERED watermarks from SVG files
-* It exports these images in png format
+*  It removes UNREGISTERED watermarks from SVG files
+*  It exports these images in png format
 
 ## Prerequisites
-* PHP 5.6 and above
-* apache2 server
+*  PHP 5.6 and above
+*  apache2 server
 
 ## Dependencies
 
@@ -40,8 +40,8 @@ sudo service apache2 restart
 ```
 
 ## Config file
-* Change config.ini.sample into config.ini
-* Set
+*  Change config.ini.sample into config.ini
+*  Set
 ```
 nodejs-path=""
 ```
@@ -52,16 +52,16 @@ To know where it's installed, type
 which node
 ```
 ## Usage
-http://localhost/SVGWatermarkRemover/
+[http://localhost/SVGWatermarkRemover/](http://localhost/SVGWatermarkRemover/)
 
-* Click on browse button.
-* Select one or multiple files.
-* Click on upload button.
-* The result is inside the browser.
-* Copy your files from /var/www/output folder.
+*  Click on browse button.
+*  Select one or multiple files.
+*  Click on upload button.
+*  The result is inside the browser.
+*  Copy your files from /var/www/output folder.
 
 ## Thanks to 
 Shakiba for SvgExport : SVG to PNG/JPEG command-line tool and Node.js module.
 It uses PhantomJS for rendering SVG files.
 
-https://github.com/shakiba/svgexport
+[SvgExport](https://github.com/shakiba/svgexport)
